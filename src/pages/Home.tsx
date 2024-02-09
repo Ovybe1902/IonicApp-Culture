@@ -10,9 +10,16 @@ import { PushNotificationSchema, PushNotifications, Token, ActionPerformed } fro
 import { Toast } from "@capacitor/toast";
 import '../../firebaseConfig';
 import {getFirestore} from "@firebase/firestore";
+import Cookies from "js-cookie";
 
 const Home: React.FC = () => {
 
+    interface UserAuthenticated {
+        name: string;
+        email: string;
+    }
+
+  
 
   const nullEntry: any[] = []
   const [notifications, setnotifications] = useState(nullEntry);
@@ -57,9 +64,8 @@ const register = () => {
             if((await(querySnapshot)).empty){
               try {
                 const docRef =  addDoc(collection(db, "fcmtoken"), {
-                    idUser: "1",
+                    idUser: Cookies.get('userId'),
                     token: token.value,
-              
                 });
             } catch (e) {
                 console.error("Error adding document: ", e);
@@ -109,15 +115,17 @@ const register = () => {
         ); 
     }
 
+
+
     return (
         <IonPage>
             <IonContent>
                 <HeaderApp notifications={notifications}></HeaderApp>
                 <h1 className="ctitle">
-                    Bonjour, lol
+                    Bonjour, {Cookies.get('username')}
                 </h1>
                 <h2 className="ctitle">
-                    bonjour ihany fa kelikely
+                    Welcome! 🌽 Dive in and explore! If you need help, we're here for you.
                 </h2>
                 <div className="searchbar">
                     <IonInput></IonInput>
