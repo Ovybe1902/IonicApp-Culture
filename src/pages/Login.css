@@ -1,0 +1,77 @@
+.image-logo-log {
+    width: 150px;
+    margin: 10px 30px;
+}
+
+.huhu {
+    background-color: var(--primarymain);
+    color: white;
+    border-radius: 10px;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-top: -125px;
+}
+
+.login .inputContain {
+    background-color: var(--primarylight);
+    padding: 10px 20px;
+    margin: 20px 0px;
+    border-radius: 20px;
+    border: 1px solid #dddddd;
+    width: 100%;
+}
+
+.login .label-button {
+    font-size: large;
+    margin: 0px;
+    padding: 10px;
+}
+
+.login h1 {
+    font-weight: bold;
+    font-size: 38px;
+    padding: 0px 25px;
+    color: var(--primarydark);
+    margin: 0;
+    text-align: center;
+}
+
+.logform {
+    width: 100%;
+}
+
+.logform .text-log{
+    text-align: center;
+}
+
+.button-log {
+    padding: 0px 15px;
+}
+
+.sign .inputContain {
+    margin: 15px 0px;
+    padding: 0px 20px;
+}
+
+.login.sign h1{
+    margin: 10px;
+    margin-bottom: 30px !important;
+}
+
+.login.sign {
+    margin-top: -150px;
+}
+
+.deco {
+    height: 175px;
+    background-color: #f2f2f2;
+    margin: -20px;
+    border-radius: 0% 0% 50% 50%;
+}
+
+

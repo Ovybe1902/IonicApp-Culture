@@ -42,3 +42,31 @@ button{
   background: none;
 }
 
+.Message h4 {
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 15px;
+  color: rgb(52 48 48);
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.Error{
+  background-color: #ff95a3;
+  border-radius: 10px;
+}
+
+.Error h4{
+  color: #a14343;
+}
+
+.Success{
+  background-color: rgb(166 245 174);
+  border-radius: 10px;
+}
+
+.Success h4{
+  color: #1f8d3f;
+}
+
