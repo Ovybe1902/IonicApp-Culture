@@ -11,8 +11,10 @@ import {
   IonItem,
   IonInput,
   IonList,
+  IonImg,
 } from '@ionic/react';
 import { OverlayEventDetail } from '@ionic/core/components';
+import './Login.css';
 
 function Login() {
   const modal = useRef<HTMLIonModalElement>(null);
@@ -25,77 +27,107 @@ function Login() {
   return (
     <IonPage>
       <IonContent className="ion-padding">
-        <h1>Hello! Welcome Back</h1>
-        <IonList>
-            <IonItem>
-              <IonInput label="Email input" type="email" placeholder="email@domain.com"></IonInput>
-            </IonItem>
-            <IonItem>
-              <IonInput label="Password input" type="password" value="password"></IonInput>
-            </IonItem>
-        </IonList>
-        <IonButton expand="block" href='/home'>
-          <p>Login</p>
-        </IonButton>
-        <p>or continue with</p>
-        <IonButton expand="block">
-          <p>Google</p>
-        </IonButton>
-        <p>don't have an account? <a id="open-modal">Signin</a></p>
+        <div className="deco">
 
-        {/* Modal sections for signin */}
+        </div>
+        <div className="login">
+          <div className="image-logo-log">
+            <IonImg src="assets/image/logo.png" alt="logo" />
+          </div>
+          <h1>Hello! Welcome Back <span className='huhu'>^3^</span></h1>
+          <div className="logform">
+            <IonList>
+                <IonItem>
+                  <div className="inputContain">
+                    <IonInput type="email" placeholder="email@domain.com"></IonInput>
+                  </div>
+                </IonItem>
+                <IonItem>
+                  <div className="inputContain">
+                    <IonInput type="password" value="password"></IonInput>
+                  </div>
+                </IonItem>
+            </IonList>
+            <div className="button-log">
+              <IonButton expand="block" href='/home'>
+                <p className='label-button'>Login</p>
+              </IonButton>
+            </div>
+              <p className='text-log'>don't have an account?</p>
+            <div className="button-log">
+              <IonButton expand="block" id="open-modal">
+                <p className='label-button'>Signin</p>
+              </IonButton>
+            </div>
+          </div>
+        </div>
+        
+          {/* Modal sections for signin */}
 
-        <IonModal ref={modal} trigger="open-modal">
-          <IonHeader>
-            <IonToolbar>
-              <IonButtons slot="start">
-                <IonButton onClick={() => modal.current?.dismiss()}>Cancel</IonButton>
-              </IonButtons>
-            </IonToolbar>
-          </IonHeader>
-          <IonContent className="ion-padding">
-            <h1>Lets get started!</h1>
-            <IonItem>
-              <IonInput
-                label="Enter your name"
-                labelPlacement="stacked"
-                ref={input}
-                type="text"
-                placeholder="Your name"
-              />
-            </IonItem>
-            <IonItem>
-              <IonInput
-                label="Enter your mail address"
-                labelPlacement="stacked"
-                ref={input}
-                type="email"
-                placeholder="email@domain.com"
-              />
-            </IonItem>
-            <IonItem>
-              <IonInput 
-                label="Password" 
-                labelPlacement="stacked"
-                ref={input}
-                type="password"
-                placeholder="your password"
-              />
-            </IonItem>
-            <IonItem>
-              <IonInput 
-                label="Confirm Password" 
-                labelPlacement="stacked"
-                ref={input}
-                type="password"
-                placeholder="your password"
-              />
-            </IonItem>
-            <IonButton expand="block" onClick={() => confirm()}>
-              <p>Signin</p>
-            </IonButton>
-          </IonContent>
-        </IonModal>
+          <IonModal ref={modal} trigger="open-modal">
+            <IonHeader>
+              <IonToolbar>
+                <IonButtons slot="start">
+                  <IonButton onClick={() => modal.current?.dismiss()}>Cancel</IonButton>
+                </IonButtons>
+              </IonToolbar>
+            </IonHeader>
+            <IonContent className="ion-padding">
+              <div className="deco">
+            
+              </div>
+              <div className="login sign">
+                <h1>Lets get started! <span className='huhu'>¨^O^¨</span></h1>
+                <div className="logform">
+                  <IonItem>
+                    <div className="inputContain">
+                      <IonInput
+                        labelPlacement="stacked"
+                        ref={input}
+                        type="text"
+                        placeholder="Your name"
+                      />
+                    </div>
+                  </IonItem>
+                  <IonItem>
+                    <div className="inputContain">
+                      <IonInput
+                        labelPlacement="stacked"
+                        ref={input}
+                        type="email"
+                        placeholder="email@domain.com"
+                      />
+                    </div>
+                  </IonItem>
+                  <IonItem>
+                    <div className="inputContain">
+                      <IonInput 
+                        labelPlacement="stacked"
+                        ref={input}
+                        type="password"
+                        placeholder="your password"
+                      />
+                    </div>
+                  </IonItem>
+                  <IonItem>
+                    <div className="inputContain">
+                      <IonInput 
+                        labelPlacement="stacked"
+                        ref={input}
+                        type="password"
+                        placeholder="confirm password"
+                      />
+                    </div>
+                  </IonItem>
+                  <div className="button-log">
+                    <IonButton expand="block" onClick={() => confirm()}>
+                      <p className='label-button'>Signin</p>
+                    </IonButton>
+                  </div>
+                </div>
+              </div>
+            </IonContent>
+          </IonModal>
       </IonContent>
     </IonPage>
   );
