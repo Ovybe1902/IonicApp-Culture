@@ -1,0 +1,41 @@
+.info-item {
+    text-align: center;
+    padding: 10px;
+}
+
+.info-item h1, .info-item h2 {
+    text-align: center;
+    height: 30px;
+    overflow-x: hidden;
+    font-size: x-large;
+    margin: 0px;
+}
+
+.info-item.up h1 {
+    height: 60px;
+}
+
+.info-item h2 {
+    opacity: 0.6;
+}
+
+.infos {
+    border-radius: 20px;
+    transform: translateY(-30px);
+    background-color: white;
+    padding-top: 25px;
+}
+
+.infos .edit-button {
+    color: var(--primarydark);
+    font-size: x-large;
+    font-weight: 600;
+    background-color: var(--primarymain);
+    padding: 16px 24px;
+    border-radius: 20px;
+    transform: translate(15px, -60px);
+    margin-bottom: -50px;
+}
+
+
+

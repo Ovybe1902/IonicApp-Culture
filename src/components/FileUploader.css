@@ -1,0 +1,19 @@
+.upload .upload-button{
+    padding: 18px;
+    border-radius: 10px;
+    background-color: #f4f3f6;
+    color: #494949;
+    font-weight: 500;
+    font-size: larger;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px;
+}
+
+.upload {
+    display: flex;
+    justify-content: center;
+}

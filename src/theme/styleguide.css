@@ -1,0 +1,44 @@
+/* src/global.scss */
+
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url('../assets/fonts/Poppins-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+@font-face {
+    font-family: 'Poppins-SemiBold';
+    src: url('../assets/fonts/Poppins-SemiBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+body {
+    font-family: 'Poppins-Medium', sans-serif !important;
+    background-color: var(--ion-color-light);
+    padding: 15px;
+  }
+
+:root {
+  --primarydark: rgba(29, 29, 29, 1);
+  --primarylight: rgba(249, 249, 242, 1);
+  --primarymain: rgba(28, 186, 112, 1);
+  --primarytext: rgba(95, 95, 95, 1);
+  --secondarydark: rgba(99, 166, 192, 1);
+  --secondarylight: rgba(189, 229, 205, 1);
+  --shadows: 0px 4px 6px 0px rgba(99, 166, 192, 0.2);
+  --white: rgba(255, 255, 255, 1);
+}
+
+.cButton {
+  color: var(--primarydark);
+  padding: 0px 0px 5px 0px;
+  background-color: var(--primarymain);
+  border-radius: 20px;
+}
+
+button{
+  background: none;
+}
+

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1017335610406",
+    "project_id": "kultora-66a9f",
+    "storage_bucket": "kultora-66a9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017335610406:android:add5f9d55a7c5c2cd43ae7",
+        "android_client_info": {
+          "package_name": "com.dedsec.kultora"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJDNFVJ8TwPTa25p3EK0JRQpi0aFtACIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

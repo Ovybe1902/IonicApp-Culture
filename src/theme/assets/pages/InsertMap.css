@@ -1,0 +1,70 @@
+.header-search{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    gap: 10px;
+    background-color: #f4f3f6;
+    border: 0px;
+}
+
+.header-search .mysearchbar{
+    padding: 3.5px;
+}
+
+.header-search .mysearchbar .searchbar-input{
+    border-radius: 10px;
+}
+
+.continue {
+    width: 100%;
+    padding: 10px;
+}
+
+.continue .cButton {
+    width: 100%;
+}
+
+a.back.cButton{
+    padding: 11px 17px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: large;
+    font-weight: 500;
+}
+
+.submit-button .cButton {
+    padding: 16px;
+    border-radius: 15px;
+    font-size: large;
+    font-weight: 500;
+    width: 100%;
+}
+
+h1{
+    font-size: xx-large;
+}
+
+label.textarea-wrapper {
+    font-size: x-large;
+    /* height: 393px; */
+}
+
+textarea#ion-textarea-0 {
+    opacity: 0.6;
+    height: 128px;
+}
+
+ion-toolbar.in-toolbar {
+    padding: 10px 10px;
+}
+
+label.input-wrapper {
+    font-size: larger;
+}
+
+.modal-insert-field .native-wrapper.sc-ion-input-ios.sc-ion-input-ios-s {
+    background-color: #f4f3f6;
+    padding: 15px;
+    border-radius: 10px;
+    margin-right: 20px;
+}

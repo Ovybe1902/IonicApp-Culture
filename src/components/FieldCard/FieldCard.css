@@ -1,0 +1,136 @@
+/* FieldCard.css */
+
+.field-card {
+  width: 300px;
+  box-shadow: none;
+  margin: 10px;
+}
+
+.field-card .field-image {
+  width: 100%;
+  height: 100%;
+  filter: contrast(1.15)  brightness(0.8);
+}
+
+.field-card .field-area-text{
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.field-card .field-area-row,
+.field-card .location-row {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 5px;
+}
+
+.field-card .location-row .location-text{
+  opacity: 0.7;
+}
+
+.field-card .location-icon {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.field-card .field-card-info{
+  background-color: var(--primarymain);
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+  box-shadow: var(--shadows);
+  transform: translate(0px, -40px);
+  /* box-shadow: inset 0px -4px 0rem 0px #37a16e, 0px 4px 0.35rem 0px #614a997a; */
+}
+
+.field-card .image-container{
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadows);
+}
+
+.field-card .nb-plot {
+  background-color: #efeb82;
+  width: fit-content;
+  margin: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  color: #ab785d;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+/* list style */
+
+.fieldList {
+  display: flex;
+  width: fit-content;
+  gap: 5px;
+  padding: 10px;
+}
+
+.Field-Scroll {
+  width: 100%;
+  padding: 5px 0px;
+  overflow-x: scroll;
+}
+
+/* Search bar  styling */
+
+.searchbar{
+  margin: 25px 20px;
+  margin-top: 42px;
+  background-color: rgb(231, 255, 226);
+  /* padding: 10px; */
+  /* box-shadow: inset 0px -4px 0rem 0px #b2dd85, 0px 4px 0.35rem 0px #614a997a; */
+  /* box-shadow: 0px 4px 0.35rem 0px #4a998d7a; */
+  border-radius: 10px;
+  display: flex;
+  padding: 10px;
+}
+
+.searchbar .native-input.sc-ion-input-ios {
+  font-size: x-large;
+  color: #9ebda1;
+}
+
+.ctitle {
+  font-weight: 500;
+  font-size: 38px;
+  padding: 0px 25px ;
+  color: #494949;
+  margin: 0;
+}
+
+h1.ctitle {
+  font-size: 40px;
+}
+
+h2.ctitle {
+  font-size: 24px;
+  opacity: 0.6;
+  padding: 10px 25px ;
+}
+
+ion-img.ios.searchbar-icon {
+  width: 25px;
+  margin-right: 8px;
+}
+
+/* ion fab */
+
+ion-fab {
+  position: fixed;
+  bottom: 35px;
+  right: 35px;
+}
+
+ion-img.searchbar-icon {
+  width: 35px;
+}

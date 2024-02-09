@@ -1,0 +1,131 @@
+/* HeaderApp.css */
+
+.headerapp-row {
+    padding: 10px;
+}
+
+.bold-text {
+    font-weight: bold;
+    font-size: 32px;
+    color: var(--primarymain);
+}
+
+.icon-button {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 30px !important;
+    overflow: hidden;
+    box-shadow: var(--shadows);
+    margin-left: 10px;
+    background-color: var(--primarylight);
+}
+
+ion-ripple-effect {
+    color: var(--primarylight) !important;
+}
+
+.notification-badge {
+    background-color: red;
+    font-size: 16px;
+    width: 32px;
+    height: 24px;
+    transform: translate(12px,12px);
+    position: absolute;
+}
+
+.headerapp{
+    box-shadow: none;
+}
+
+/* UserProfile.css */
+
+.user-profile {
+    padding: 20px;
+}
+
+.user-profile .profile-pic-row {
+    margin-bottom: 10px;
+}
+
+.user-profile .profile-pic {
+    width: auto;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.username-row,
+.email-row {
+    margin-bottom: 5px;
+}
+
+.disconnect-button-row {
+    margin-top: 20px;
+}
+
+.disconnect-button {
+    color: white;
+    font-weight: bold;
+    border-radius: 30px;
+}
+
+.user-profile .image-container{
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 10px solid var(--primarylight);
+    /* box-shadow: var(--shadows); */
+    margin: 5px;
+    z-index: 10;
+    box-shadow: 0px 4px 0.35rem 0px #614a9938;
+    transform: translateY(25);
+}
+
+.user-profile .username{
+    color: var(--primarydark);
+}
+
+.user-profile .user-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.user-profile .user-info h1{
+    font-weight: bolder;
+    margin: 0px;
+}
+
+.user-profile .user-info p{
+    font-weight: bolder;
+    margin: 5px;
+    opacity: 0.5;
+}
+
+.user-profile .certified-icon{
+    width: 40px;
+}
+
+.user-profile .username-group{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin: 5px;
+}
+
+.user-profile .basic-info{
+    background-color: rgba(231, 255, 226, 0.592);
+    padding: 30px;
+    border-radius: 30px;
+    padding-top: 50px;
+    margin-bottom: -50px;
+    transform: translateY(-60px);
+}
+  

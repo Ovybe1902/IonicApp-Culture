@@ -1,0 +1,59 @@
+:root {
+  --primarydark: rgba(29, 29, 29, 1);
+  --primarylight: rgba(249, 249, 242, 1);
+  --primarymain: rgba(28, 186, 112, 1);
+  --primarytext: rgba(95, 95, 95, 1);
+  --secondarydark: rgba(99, 166, 192, 1);
+  --secondarylight: rgba(189, 229, 205, 1);
+  --shadows: 0px 4px 6px 0px rgba(99, 166, 192, 0.2);
+  --white: rgba(255, 255, 255, 1);
+}
+
+ion-header.map-header.md.header-md.header-collapse-none {
+    display: flex;
+  }
+
+.mybutton{
+  background-color: rgba(28, 186, 112, 1) !important;
+  box-shadow: none;
+  border-radius: 20px;
+}
+
+.fields-card-list {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.fields-card-list .cCard{
+  min-width: 242px;
+}
+
+.fields-card-list .cCard .imgContainer{
+  width: 100%;
+  min-width: 242px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.fields-card-list .cCard img{
+  width: 100%;
+  height: auto;
+}
+
+.fields-card-list-overflow {
+  overflow-x: scroll;
+  padding: 10px;
+  width: 100%;
+}
+
+ion-card{
+  border-radius: 20px;
+}
+
+.fields-card-list ion-card-header{
+  background-color: var(--primarymain);
+  border-radius: 20px;
+}
+    
