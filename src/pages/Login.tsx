@@ -13,6 +13,18 @@ import {
   IonList,
 } from '@ionic/react';
 import { OverlayEventDetail } from '@ionic/core/components';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom'; // Import useHistory from react-router-dom
+import Cookies from 'js-cookie';
+
+
+
+
+interface UserCredentials {
+  email: string;
+  pwd: string;
+}
+
 
 function Login() {
   const modal = useRef<HTMLIonModalElement>(null);
@@ -21,20 +33,41 @@ function Login() {
   function confirm() {
     modal.current?.dismiss(input.current?.value, 'confirm');
   }
+  
+  const [credentials, setCredentials] = useState<UserCredentials>({
+    email: '',
+    pwd: '',
+  });
 
+  const history = useHistory(); // Access the history object
+  const handleLogin = async () => {
+    try {
+      // Assuming your API endpoint is at http://example.com/login
+      const response = await axios.post('http://localhost:8080/api/login', credentials);
+      console.log(response.data); // handle response as needed
+      Cookies.set('userId', response.data.idOwner);
+      Cookies.set('username', response.data.name);
+      Cookies.set('email', response.data.email);
+      history.push('/home'); // Replace '/home' with your target route
+
+
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
+  };
   return (
     <IonPage>
       <IonContent className="ion-padding">
         <h1>Hello! Welcome Back</h1>
         <IonList>
             <IonItem>
-              <IonInput label="Email input" type="email" placeholder="email@domain.com"></IonInput>
+              <IonInput label="Email input" type="email" placeholder="email@domain.com" onIonChange={(e) => setCredentials({ ...credentials, email: e.detail.value! })}></IonInput>
             </IonItem>
             <IonItem>
-              <IonInput label="Password input" type="password" value="password"></IonInput>
+              <IonInput label="Password input" type="password" value="password" onIonChange={(e) => setCredentials({ ...credentials, pwd: e.detail.value! })}></IonInput>
             </IonItem>
         </IonList>
-        <IonButton expand="block" href='/home'>
+        <IonButton expand="block" onClick={handleLogin}>
           <p>Login</p>
         </IonButton>
         <p>or continue with</p>

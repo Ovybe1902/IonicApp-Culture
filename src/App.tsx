@@ -38,8 +38,13 @@ import InsertMap from './pages/InsertMap';
 import Create from './pages/Create';
 import Home from './pages/Home';
 import ViewMap from './pages/ViewMap';
+import Cookies from 'js-cookie';
+import ProtectedRoute from './components/Route/ProtectedRoute'; // Adjust the import path according to your project structure
+
 
 setupIonicReact();
+
+
 
 const App: React.FC = () => (
   <IonApp>
@@ -48,21 +53,18 @@ const App: React.FC = () => (
           <Route exact path="/login">
             <Login />
           </Route>
-          <Route exact path="/home">
-            <Home></Home>
-          </Route>
-          <Route path="/addfield">
-            <InsertMap/>
-          </Route>
+          <ProtectedRoute exact path="/home" component={Home}>
+          </ProtectedRoute>
+          <ProtectedRoute path="/addfield" component={InsertMap}>
+          </ProtectedRoute>
           <Route exact path="/">
             <Redirect to="/login" />
           </Route>
-          <Route exact path="/create">
-            <Create/>
-          </Route>
-          <Route exact path="/field">
-            <ViewMap/>
-          </Route>
+          <ProtectedRoute  path="/create" component={Create}>
+          </ProtectedRoute>
+          <ProtectedRoute  path="/field" component={ViewMap}>
+          </ProtectedRoute>
+
         </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

@@ -10,6 +10,7 @@ import { PushNotificationSchema, PushNotifications, Token, ActionPerformed } fro
 import { Toast } from "@capacitor/toast";
 import '../../firebaseConfig';
 import {getFirestore} from "@firebase/firestore";
+import Cookies from "js-cookie";
 
 const Home: React.FC = () => {
 
@@ -108,6 +109,7 @@ const register = () => {
         }
         ); 
     }
+
 
     return (
         <IonPage>

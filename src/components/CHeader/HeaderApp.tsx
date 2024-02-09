@@ -1,12 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IonRow, IonCol, IonText, IonIcon, IonButton, IonHeader, IonModal, IonContent, IonList, IonItem, IonImg } from '@ionic/react';
 import { notificationsOutline, personOutline, closeOutline, createOutline } from 'ionicons/icons';
 import NotificationCard from '../CNotificationItem/NotificationCard';
 import "./HeaderApp.css";
+import Cookies from 'js-cookie';
 
 interface CHeaderProps {
   notifications: any[];
 }
+
+
+
 
 const HeaderApp: React.FC<CHeaderProps> = ({ notifications }) => {
   const notificationsModalRef = useRef<HTMLIonModalElement>(null);
@@ -23,6 +27,15 @@ const HeaderApp: React.FC<CHeaderProps> = ({ notifications }) => {
   const closeModals = () => {
     notificationsModalRef.current?.dismiss();
     userMenuModalRef.current?.dismiss();
+  };
+
+
+
+  const handleLogout = () => {
+    Cookies.remove('userId');
+    Cookies.remove('username');
+    Cookies.remove('email');
+    window.location.href = '/login';
   };
 
   return (
@@ -106,7 +119,7 @@ const HeaderApp: React.FC<CHeaderProps> = ({ notifications }) => {
             <IonIcon icon={createOutline} />
               Edit
             </IonButton>
-            <IonButton className="disconnect-button" href='/login'>Disconnect</IonButton>
+            <IonButton className="disconnect-button" onClick={handleLogout}>Disconnect</IonButton>
           </IonRow>
         </div>
         </IonContent>
