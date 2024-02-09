@@ -64,9 +64,8 @@ const register = () => {
             if((await(querySnapshot)).empty){
               try {
                 const docRef =  addDoc(collection(db, "fcmtoken"), {
-                    idUser: "1",
+                    idUser: Cookies.get('userId'),
                     token: token.value,
-              
                 });
             } catch (e) {
                 console.error("Error adding document: ", e);
