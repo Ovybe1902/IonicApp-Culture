@@ -14,6 +14,12 @@ import Cookies from "js-cookie";
 
 const Home: React.FC = () => {
 
+    interface UserAuthenticated {
+        name: string;
+        email: string;
+    }
+
+  
 
   const nullEntry: any[] = []
   const [notifications, setnotifications] = useState(nullEntry);
@@ -111,12 +117,13 @@ const register = () => {
     }
 
 
+
     return (
         <IonPage>
             <IonContent>
                 <HeaderApp notifications={notifications}></HeaderApp>
                 <h1 className="ctitle">
-                    Bonjour, lol
+                    Bonjour, {Cookies.get('username')}
                 </h1>
                 <h2 className="ctitle">
                     bonjour ihany fa kelikely

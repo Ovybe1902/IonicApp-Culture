@@ -92,12 +92,12 @@ const HeaderApp: React.FC<CHeaderProps> = ({ notifications }) => {
           <div className="basic-info">
             <IonRow className="username-row ion-align-items-center ion-justify-content-center">
               <div className="username-group">
-                <IonText className="username" style={{ fontSize: '32px', fontWeight: 'bold' }}>John Doe</IonText>
+                <IonText className="username" style={{ fontSize: '32px', fontWeight: 'bold' }}>{Cookies.get('username')}</IonText>
                 <IonImg className="certified-icon" src="/assets/icons/certified.png" alt="Certified" />
               </div>
             </IonRow>
             <IonRow className="email-row ion-align-items-center ion-justify-content-center">
-              <IonText className="email-address" style={{ fontSize: '16px', fontWeight: '600', opacity: '0.6' }}>johndoe@gmail.com</IonText>
+              <IonText className="email-address" style={{ fontSize: '16px', fontWeight: '600', opacity: '0.6' }}>{Cookies.get('email')}</IonText>
             </IonRow>
           </div>
           <IonRow>

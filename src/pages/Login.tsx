@@ -25,6 +25,13 @@ interface UserCredentials {
   pwd: string;
 }
 
+interface UserInformations {
+  name: string;
+  email: string;
+  pwd: string;
+  pwdconfirm: string;
+}
+
 
 function Login() {
   const modal = useRef<HTMLIonModalElement>(null);
@@ -37,6 +44,13 @@ function Login() {
   const [credentials, setCredentials] = useState<UserCredentials>({
     email: '',
     pwd: '',
+  });
+
+  const [informations, setInformations] = useState<UserInformations>({
+    name: '',
+    email: '',
+    pwd: '',
+    pwdconfirm: ''
   });
 
   const history = useHistory(); // Access the history object
@@ -55,6 +69,26 @@ function Login() {
       console.error('Login failed:', error);
     }
   };
+
+  const handleSignIn = async () => {
+    try {
+      // Assuming your API endpoint is at http://example.com/signup
+
+      if(informations.pwd !== informations.pwdconfirm){
+        console.error('Password confirmation failed');
+        return;
+      }
+      const response = await axios.post('http://localhost:8080/api/register', informations);
+      console.log(response.data); // handle response as needed
+      Cookies.set('userId', response.data.idOwner);
+      Cookies.set('username', response.data.name);
+      Cookies.set('email', response.data.email);
+      window.location.href = "/home";
+      console.log("hey");
+    } catch (error) {
+      console.error('Signin failed:', error);
+    }
+  }
   return (
     <IonPage>
       <IonContent className="ion-padding">
@@ -95,6 +129,7 @@ function Login() {
                 ref={input}
                 type="text"
                 placeholder="Your name"
+                onIonChange={(e) => setInformations({ ...informations, name: e.detail.value! })}
               />
             </IonItem>
             <IonItem>
@@ -104,6 +139,7 @@ function Login() {
                 ref={input}
                 type="email"
                 placeholder="email@domain.com"
+                onIonChange={(e) => setInformations({ ...informations, email: e.detail.value! })}
               />
             </IonItem>
             <IonItem>
@@ -113,6 +149,7 @@ function Login() {
                 ref={input}
                 type="password"
                 placeholder="your password"
+                onIonChange={(e) => setInformations({ ...informations, pwd: e.detail.value! })}
               />
             </IonItem>
             <IonItem>
@@ -122,9 +159,10 @@ function Login() {
                 ref={input}
                 type="password"
                 placeholder="your password"
+                onIonChange={(e) => setInformations({ ...informations, pwdconfirm: e.detail.value! })}
               />
             </IonItem>
-            <IonButton expand="block" onClick={() => confirm()}>
+            <IonButton expand="block" onClick={handleSignIn}>
               <p>Signin</p>
             </IonButton>
           </IonContent>
