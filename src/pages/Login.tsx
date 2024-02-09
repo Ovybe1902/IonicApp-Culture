@@ -36,6 +36,12 @@ function Login() {
           </div>
           <h1>Hello! Welcome Back <span className='huhu'>^3^</span></h1>
           <div className="logform">
+            <div className="Error Message">
+              <h4>This is an error message "-^-</h4>
+            </div>
+            <div className="Success Message">
+              <h4>This is a success message ¨^O^¨</h4>
+            </div>
             <IonList>
                 <IonItem>
                   <div className="inputContain">
