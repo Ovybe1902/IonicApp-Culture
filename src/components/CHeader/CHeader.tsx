@@ -17,8 +17,12 @@ import {
 } from '@ionic/react';
 import { notificationsOutline, personOutline, closeOutline } from 'ionicons/icons';
 import CNotificationItem from '../CNotificationItem/CNotificationItem';
+import CNotificationCard from '../CNotificationCard/CNotificationCard';
 
-const CHeader: React.FC = () => {
+interface CHeaderProps{
+  notifications: any[];
+}
+const CHeader: React.FC<CHeaderProps> = ({notifications}) => {
   const notificationsModalRef = useRef<HTMLIonModalElement>(null);
   const userMenuModalRef = useRef<HTMLIonModalElement>(null);
 
@@ -35,13 +39,14 @@ const CHeader: React.FC = () => {
     userMenuModalRef.current?.dismiss();
   };
 
+
   return (
     <IonHeader>
       <IonToolbar>
         <IonButtons slot="start">
           <IonButton onClick={openNotificationsModal}>
             <IonIcon slot="icon-only" icon={notificationsOutline} />
-            <IonBadge color="danger">3</IonBadge>
+            <IonBadge color="danger">{notifications.length}</IonBadge>
           </IonButton>
         </IonButtons>
 
@@ -60,15 +65,14 @@ const CHeader: React.FC = () => {
             <IonButton onClick={closeModals} fill="clear" slot="end">
               <IonIcon icon={closeOutline} />
             </IonButton>
-            <IonItem>
-              <CNotificationItem username='Jean' message="vous a envoyé une demande d'amis" read={false}></CNotificationItem>
-            </IonItem>
-            <IonItem>
-              <CNotificationItem username='Koto' message="vous a envoyé une demande d'amis" read={false}></CNotificationItem>
-            </IonItem>
-            <IonItem>
-              <CNotificationItem username='Laitsa' message="vous a envoyé une demande d'amis" read={true}></CNotificationItem>
-            </IonItem>
+            {notifications.map((notification) => (
+              <CNotificationCard
+                userProfileImage="public\assets\image\johnDoe.jpg"
+                username='Admin'
+                message={notification.body}
+              />
+            ))}
+           
           </IonList>
         </IonContent>
       </IonModal>
