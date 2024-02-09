@@ -126,7 +126,7 @@ const register = () => {
                     Bonjour, {Cookies.get('username')}
                 </h1>
                 <h2 className="ctitle">
-                    bonjour ihany fa kelikely
+                    Welcome! 🌽 Dive in and explore! If you need help, we're here for you.
                 </h2>
                 <div className="searchbar">
                     <IonInput></IonInput>
