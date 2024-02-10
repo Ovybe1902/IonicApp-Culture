@@ -1,0 +1,33 @@
+.previews {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    height: 250px;
+    width: max-content;
+}
+
+.previews ion-img {
+    width: auto;
+    height: 100%;
+}
+
+.descri{
+    margin-top: 25px;
+}
+
+.descri p {
+    font-size: larger;
+}
+
+.previews-scroll {
+    width: 100%;
+    overflow-x: scroll;
+}
+
+span.plot {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    margin: 0px 10px;
+    padding: 15px 30px;
+}
