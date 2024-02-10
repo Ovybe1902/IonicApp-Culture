@@ -4,13 +4,14 @@ import HeaderApp from "../components/CHeader/HeaderApp";
 import FieldCard from "../components/FieldCard/FieldCard";
 import { add } from 'ionicons/icons';
 
-import FloatingButton from "../components/FloatingButton";
 import { collection, addDoc, getDocs, doc, getDoc, where, query} from "@firebase/firestore";
 import { PushNotificationSchema, PushNotifications, Token, ActionPerformed } from '@capacitor/push-notifications';
 import { Toast } from "@capacitor/toast";
 import '../../firebaseConfig';
 import {getFirestore} from "@firebase/firestore";
 import axios from 'axios';
+import Cookies from 'js-cookie';
+
 
 interface Field {
     field: any;
@@ -27,7 +28,7 @@ const Home: React.FC = () => {
       const fetchData = async () => {
         // setLoading(true);
         // await new Promise(resolve => setTimeout(resolve, 500));
-        const endpoint = `http://localhost:8080/api/fields`;
+        const endpoint = `http://localhost:8080/api/owner/fields?idUser=`+Cookies.get("idUser");
     
         try {
           const response = await axios.get<Field[]>(endpoint);
