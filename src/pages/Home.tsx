@@ -10,8 +10,35 @@ import { PushNotificationSchema, PushNotifications, Token, ActionPerformed } fro
 import { Toast } from "@capacitor/toast";
 import '../../firebaseConfig';
 import {getFirestore} from "@firebase/firestore";
+import axios from 'axios';
+
+interface Field {
+    field: any;
+  }
 
 const Home: React.FC = () => {
+
+    const[fields, setFields] = useState<any[]>([]);
+
+    useEffect(() => {
+        fetchData();
+      }, []);
+    
+      const fetchData = async () => {
+        // setLoading(true);
+        // await new Promise(resolve => setTimeout(resolve, 500));
+        const endpoint = `http://localhost:8080/api/fields`;
+    
+        try {
+          const response = await axios.get<Field[]>(endpoint);
+          setFields(response.data);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }finally{
+        //   setLoading(false);
+        }
+      };
+
 
 
   const nullEntry: any[] = []
@@ -126,18 +153,11 @@ const register = () => {
                 
                 <div className="Field-Scroll">
                     <div className="fieldList">
-                        <FieldCard
-                            fieldAreaText="451,156 km²"
-                            locationText="452RH+, Analamanga, Antananarivo"
-                        />
-                        <FieldCard
-                            fieldAreaText="451,156 km²"
-                            locationText="452RH+, Analamanga, Antananarivo"
-                        />
-                        <FieldCard
-                            fieldAreaText="451,156 km²"
-                            locationText="452RH+, Analamanga, Antananarivo"
-                        />
+
+                        {fields.map((field, index) => (
+                            <FieldCard key={index} field={field} />
+                        ))}
+                        
                     </div>
                 </div>
                 <IonFab>
