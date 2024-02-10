@@ -123,7 +123,7 @@ function Login() {
                 </IonItem>
             </IonList>
             <div className="button-log">
-              <IonButton expand="block" href='/home'>
+              <IonButton expand="block" onClick={handleLogin}>
                 <p className='label-button'>Login</p>
               </IonButton>
             </div>
