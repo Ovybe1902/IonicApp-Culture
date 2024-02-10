@@ -25,20 +25,6 @@ const Create: React.FC = () => {
                     <div className="fieldList">
                         <a href="/field">
                             <FieldCard
-                                fieldAreaText="451,156 km²"
-                                locationText="452RH+, Analamanga, Antananarivo"
-                            />
-                        </a>
-                        <a href="/field">
-                            <FieldCard
-                                fieldAreaText="451,156 km²"
-                                locationText="452RH+, Analamanga, Antananarivo"
-                            />
-                        </a>
-                        <a href="/field">
-                            <FieldCard
-                                fieldAreaText="451,156 km²"
-                                locationText="452RH+, Analamanga, Antananarivo"
                             />
                         </a>
 

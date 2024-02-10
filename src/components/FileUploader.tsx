@@ -19,12 +19,15 @@ const FileUploader: React.FC = () => {
             previews.push(e.target.result.toString());
             setFilePreviews([...previews]);
 
+
             /** base64 String */
             console.log(e.target.result.toString());
           }
         };
         reader.readAsDataURL(files[i]);
       }
+      localStorage.setItem('pictures', JSON.stringify(previews));
+
     }
   };
 

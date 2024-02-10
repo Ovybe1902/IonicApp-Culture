@@ -41,6 +41,8 @@ const MapGoogle: React.FC<MapGoogleProps> = ({ searchLocation, draggable, defaul
     setMarkers((prevMarkers) =>
       prevMarkers.map((marker) => (marker.id === markerId ? { ...marker, position: newPosition } : marker))
     );
+    localStorage.setItem(markerId.toString(), JSON.stringify(newPosition));
+
   };
 
   useEffect(() => {
@@ -52,7 +54,10 @@ const MapGoogle: React.FC<MapGoogleProps> = ({ searchLocation, draggable, defaul
         { id: 3, position: { lat: searchLocation.position.lat, lng: searchLocation.position.lng } },
         { id: 4, position: { lat: searchLocation.position.lat, lng: searchLocation.position.lng } },
         ]);
+
     }
+ 
+
   }, [searchLocation]);
 
   const coordinates = markers.map((marker) => ({ lat: marker.position.lat, lng: marker.position.lng }));
@@ -65,6 +70,10 @@ const MapGoogle: React.FC<MapGoogleProps> = ({ searchLocation, draggable, defaul
         const polygon = turf.polygon([coordinates]);
         const area = turf.area(polygon);
         setSurface(area);
+
+        localStorage.setItem('surface', JSON.stringify(surface));
+        console.log(localStorage.getItem('surface'));
+
       } catch (error) {
         console.log('NOT WORKING : ' + error);
       }
@@ -102,6 +111,7 @@ const MapGoogle: React.FC<MapGoogleProps> = ({ searchLocation, draggable, defaul
 
       if (results && results.length > 0) {
         setPlaceName(results[0].formatted_address);
+        localStorage.setItem('placeName', JSON.stringify(placeName));
       } else {
         setPlaceName(null);
       }
@@ -117,6 +127,10 @@ const MapGoogle: React.FC<MapGoogleProps> = ({ searchLocation, draggable, defaul
       console.log(placeName);
     }
   }, [centerCoordinate]);
+
+
+  
+
 
   return (
     <>
