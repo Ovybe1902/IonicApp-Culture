@@ -59,11 +59,14 @@ function Login() {
   const handleLogin = async () => {
     try {
       // Assuming your API endpoint is at http://example.com/login
-      const response = await axios.post('http://192.168.0.101:8080/api/login', credentials);
+      const response = await axios.post('http://localhost:8080/api/login', credentials);
       console.log(response.data); // handle response as needed
       Cookies.set('userId', response.data.idOwner);
       Cookies.set('username', response.data.name);
       Cookies.set('email', response.data.email);
+      Cookies.set('idWallet', response.data.wallet.idWallet);
+      Cookies.set("number", response.data.wallet.number);
+      Cookies.set("balance", response.data.wallet.balance);
       history.push('/home'); // Replace '/home' with your target route
 
 

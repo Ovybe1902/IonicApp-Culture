@@ -4,11 +4,21 @@ import { notificationsOutline, personOutline, closeOutline, createOutline } from
 import NotificationCard from '../CNotificationItem/NotificationCard';
 import "./HeaderApp.css";
 import Cookies from 'js-cookie';
+import axios from 'axios';
 
 interface CHeaderProps {
   notifications: any[];
 }
 
+interface wallet_balance{
+  idOwner : number;
+  amount : number;
+}
+
+interface depositRequest{
+  idOwner: number;
+  amount : number;
+}
 
 
 
@@ -35,8 +45,36 @@ const HeaderApp: React.FC<CHeaderProps> = ({ notifications }) => {
     Cookies.remove('userId');
     Cookies.remove('username');
     Cookies.remove('email');
+    Cookies.remove('balance');
+    Cookies.remove('number');
+    Cookies.remove('idWallet');
+
+
+
     window.location.href = '/login';
   };
+
+  const [wallet_balance, setWallet_balance] = useState<wallet_balance>({
+    idOwner: Number.parseInt(Cookies.get('userId')!),
+    amount: 0,
+  });  
+
+  const [depositRequest, setDepositRequest] = useState<depositRequest>({
+    idOwner: Number.parseInt(Cookies.get('userId')!),
+    amount: 0,
+  });  
+
+  const handleDeposit = async () => {
+    const response = await axios.post('http://localhost:8080/api/wallet/deposit', depositRequest);
+    if(response.status === 200){
+      Cookies.set("balance", response.data.wallet.balance);
+    }
+
+  };
+
+   useEffect (() => {
+    setWallet_balance({amount: Number.parseInt(Cookies.get('balance')!), idOwner: Number.parseInt(Cookies.get('userId')!)});
+  }, [wallet_balance]);
 
   return (
     <IonHeader className="headerapp">
@@ -103,15 +141,15 @@ const HeaderApp: React.FC<CHeaderProps> = ({ notifications }) => {
           <IonRow>
             <IonCol size='12'>
               <div className="wallet">
-                <h1> 156💲</h1>
+                <h1> {Cookies.get("balance")}💲</h1>
                 <button><h1>+</h1></button>
               </div>
             </IonCol>
 
             <IonCol size='12'>
               <div className="add wallet">
-                <IonInput type='number'></IonInput>
-                <button><h1>+</h1></button>
+                <IonInput type='number' onIonChange={(e) => setDepositRequest({ ...depositRequest, amount: Number.parseInt(e.detail.value!) })}></IonInput>
+                <button onClick={handleDeposit}><h1>+</h1></button>
               </div>
             </IonCol>
           </IonRow>
