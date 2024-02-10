@@ -115,11 +115,12 @@ const register = () => {
         ); 
     }
 
-
-
     return (
         <IonPage>
             <IonContent>
+            <div className="deco">
+            </div>
+            <div className="home">
                 <HeaderApp notifications={notifications}></HeaderApp>
                 <h1 className="ctitle">
                     Bonjour, {Cookies.get('username')}
@@ -131,7 +132,7 @@ const register = () => {
                     <IonInput></IonInput>
                     <IonImg className="searchbar-icon" src="/assets/icons/SearchIcon.png"></IonImg>
                 </div>
-                
+                    
                 <div className="Field-Scroll">
                     <div className="fieldList">
                         <FieldCard
@@ -153,6 +154,7 @@ const register = () => {
                     <IonIcon icon={add}></IonIcon>
                     </IonFabButton>
                 </IonFab>
+            </div>
             </IonContent>
         </IonPage>
     );
