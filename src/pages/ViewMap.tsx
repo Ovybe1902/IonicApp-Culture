@@ -6,7 +6,8 @@ import ScreenshotButton from "../components/MapGoogle/ScreenshotButton";
 import './../theme/assets/pages/style.css';
 import FileUploader from "../components/FileUploader";
 import "./../theme/assets/pages/InsertMap.css";
-import "./../theme/assets/pages/InsertMap.css"
+import "./../theme/assets/pages/InsertMap.css";
+import { useLocation } from 'react-router-dom';
 
 interface Location {
     id: number;
@@ -22,6 +23,13 @@ const ViewMap: React.FC = () => {
     const handleSearch = (location: Location) => {
       setSearchLocation(location);
     };
+
+    // const location = useLocation();
+    // const queryParams = new URLSearchParams(location.search);
+    // const encodedObject = queryParams.get('data');
+
+    // // Decode and parse the object
+    // const field = JSON.parse(decodeURIComponent(encodedObject));
 
     const modal = useRef<HTMLIonModalElement>(null);
     const input = useRef<HTMLIonInputElement>(null);

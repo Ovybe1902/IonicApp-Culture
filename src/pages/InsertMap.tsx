@@ -35,6 +35,8 @@ const InsertMap: React.FC = () => {
       modal.current?.dismiss(input.current?.value, 'confirm');
     }
 
+    const [test, setTest] = useState('');
+
     return(
         <IonPage>
             <div className="header-search">
@@ -93,6 +95,7 @@ const InsertMap: React.FC = () => {
                         </IonRow>
                     </IonContent>
                 </IonModal>
+
             </IonContent>
         </IonPage>
     );

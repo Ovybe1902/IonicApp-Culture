@@ -86,7 +86,6 @@ const register = () => {
                 const docRef =  addDoc(collection(db, "fcmtoken"), {
                     idUser: "1",
                     token: token.value,
-              
                 });
             } catch (e) {
                 console.error("Error adding document: ", e);
@@ -157,7 +156,7 @@ const register = () => {
                         {fields.map((field, index) => (
                             <FieldCard key={index} field={field} />
                         ))}
-                        
+
                     </div>
                 </div>
                 <IonFab>

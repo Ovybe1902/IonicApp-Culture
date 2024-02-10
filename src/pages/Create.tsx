@@ -1,10 +1,36 @@
 import { IonContent, IonIcon, IonImg, IonInput, IonPage, IonSearchbar, IonTitle } from "@ionic/react";
 import React from "react";
+import {useEffect, useState} from "react";
 import NotificationCard from "../components/CNotificationItem/NotificationCard";
 import HeaderApp from "../components/CHeader/HeaderApp";
 import FieldCard from "../components/FieldCard/FieldCard";
+import axios from 'axios';
+
+interface Field {
+    field: any;
+  }
 
 const Create: React.FC = () => {
+    const[fields, setFields] = useState<any[]>([]);
+
+    useEffect(() => {
+        fetchData();
+      }, []);
+    
+      const fetchData = async () => {
+        // setLoading(true);
+        // await new Promise(resolve => setTimeout(resolve, 500));
+        const endpoint = `http://localhost:8080/api/fields`;
+    
+        try {
+          const response = await axios.get<Field[]>(endpoint);
+          setFields(response.data);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }finally{
+        //   setLoading(false);
+        }
+      };
 
     return (
         <IonPage>
@@ -24,24 +50,10 @@ const Create: React.FC = () => {
                 <div className="Field-Scroll">
                     <div className="fieldList">
                         <a href="/field">
-                            <FieldCard
-                                fieldAreaText="451,156 km²"
-                                locationText="452RH+, Analamanga, Antananarivo"
-                            />
+                            {fields.map((field, index) => (
+                                <FieldCard key={index} field={field} />
+                            ))}
                         </a>
-                        <a href="/field">
-                            <FieldCard
-                                fieldAreaText="451,156 km²"
-                                locationText="452RH+, Analamanga, Antananarivo"
-                            />
-                        </a>
-                        <a href="/field">
-                            <FieldCard
-                                fieldAreaText="451,156 km²"
-                                locationText="452RH+, Analamanga, Antananarivo"
-                            />
-                        </a>
-
                     </div>
                 </div>
             </IonContent>
