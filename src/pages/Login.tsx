@@ -68,6 +68,9 @@ function Login() {
 
 
     } catch (error) {
+      const element = document.getElementById("msg");
+      if(element!==null)
+        element.innerHTML = "<div class='Error Message'><h4>Wrong email or password '-^-'</h4></div>";
       console.error('Login failed:', error);
     }
   };
@@ -88,6 +91,7 @@ function Login() {
       window.location.href = "/home";
       console.log("hey");
     } catch (error) {
+      document.getElementById
       console.error('Signin failed:', error);
     }
   }
@@ -104,11 +108,7 @@ function Login() {
           </div>
           <h1>Hello! Welcome Back <span className='huhu'>^3^</span></h1>
           <div className="logform">
-            <div className="Error Message">
-              <h4>This is an error message "-^-</h4>
-            </div>
-            <div className="Success Message">
-              <h4>This is a success message ¨^O^¨</h4>
+            <div id="msg">
             </div>
             <IonList>
                 <IonItem>
