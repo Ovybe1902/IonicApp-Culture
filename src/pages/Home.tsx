@@ -28,7 +28,7 @@ const Home: React.FC = () => {
       const fetchData = async () => {
         // setLoading(true);
         // await new Promise(resolve => setTimeout(resolve, 500));
-        const endpoint = `http://localhost:8080/api/owner/fields?idUser=`+Cookies.get("idUser");
+        const endpoint = `http://localhost:8080/api/owner/fields?idUser=`+Cookies.get("userId");
     
         try {
           const response = await axios.get<Field[]>(endpoint);
