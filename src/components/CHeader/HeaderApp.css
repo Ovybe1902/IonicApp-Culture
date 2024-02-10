@@ -63,12 +63,6 @@ ion-ripple-effect {
     margin-top: 20px;
 }
 
-.disconnect-button {
-    color: white;
-    font-weight: bold;
-    border-radius: 30px;
-}
-
 .user-profile .image-container{
     width: 150px;
     height: 150px;
@@ -127,5 +121,52 @@ ion-ripple-effect {
     padding-top: 50px;
     margin-bottom: -50px;
     transform: translateY(-60px);
+}
+
+.user-profile .wallet{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.user-profile .wallet ion-input{
+    font-size: x-large !important;
+    padding: 15px !important;
+    background-color: #f5f4f4 !important;
+    color: #999999;
+}
+
+.user-profile .wallet ion-input,
+.user-profile .wallet h1,
+.user-profile .wallet p{
+    margin: 5px;
+    font-size: xx-large;
+    background-color: #eff5fb;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.user-profile .wallet h1{
+    font-weight: 600;
+}
+
+.user-profile .wallet button h1{
+    background-color: var(--primarymain);
+    padding: 15px 20px;
+}
+
+.user-profile .wallet.add{
+    margin: 0px;
+}
+
+.disconnect-button{
+    background-color: var(--primarymain);
+    padding: 20px;
+    color: white;
+    font-size: x-large;
+    font-weight: 600;
+    border-radius: 10px;
 }
   

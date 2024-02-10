@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonCol, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonList, IonModal, IonPage, IonRow, IonTextarea, IonToolbar } from "@ionic/react";
+import { IonButton, IonButtons, IonCol, IonContent, IonHeader, IonImg, IonInput, IonItem, IonLabel, IonList, IonModal, IonPage, IonRow, IonTextarea, IonToolbar } from "@ionic/react";
 import React,{useState, useRef, useEffect} from "react";
 import SearchBar from "../components/MapGoogle/SearchBar";
 import ScreenshotButton from "../components/MapGoogle/ScreenshotButton";
@@ -6,7 +6,7 @@ import ScreenshotButton from "../components/MapGoogle/ScreenshotButton";
 import './../theme/assets/pages/style.css';
 import FileUploader from "../components/FileUploader";
 import "./../theme/assets/pages/InsertMap.css";
-import "./../theme/assets/pages/InsertMap.css"
+import "./../theme/assets/pages/ViewMap.css";
 
 interface Location {
     id: number;
@@ -73,44 +73,60 @@ const ViewMap: React.FC = () => {
                         </IonToolbar>
                     </IonHeader>
                     <IonContent className="ion-padding">
-                        <IonRow>
-                            <IonCol size="12">
-                                <h1>Insert Field!</h1>
-                            </IonCol>
-                        </IonRow>
-                        <IonRow>
-                            <IonCol size="12">
-                                <IonInput label="plot number" type="number">
-
-                                </IonInput>
-                                <IonTextarea
-                                    label="Description"
-                                    labelPlacement="stacked"
-                                    placeholder="Description"
-                                />
-                            </IonCol>
-                        </IonRow>
                         {draggable && (
-                            <IonRow>
+                            <>
                                 <IonRow>
                                     <IonCol size="12">
-                                        <FileUploader></FileUploader>
+                                        <h1>Update Field!</h1>
                                     </IonCol>
                                 </IonRow>
-                                <IonCol size="12">
-                                    <div className="submit-button">
-                                        <button className="cButton">Validate</button>
-                                    </div>
-                                </IonCol>
-                            </IonRow>
+                                <IonRow>
+                                    <IonCol size="12">
+                                        <IonInput label="plot number" type="number">
+
+                                        </IonInput>
+                                        <IonTextarea
+                                            label="Description"
+                                            labelPlacement="stacked"
+                                            placeholder="Description"
+                                        />
+                                    </IonCol>
+                                </IonRow>
+                                <IonRow>
+                                    <IonRow>
+                                        <IonCol size="12">
+                                            <FileUploader></FileUploader>
+                                        </IonCol>
+                                    </IonRow>
+                                    <IonCol size="12">
+                                        <div className="submit-button">
+                                            <button className="cButton">Validate</button>
+                                        </div>
+                                    </IonCol>
+                                </IonRow>
+                            </>
                         )}
                         {!draggable && (
-                            <IonRow>
+                            <>
                                 <IonRow>
-                                    <h1>Image Previews</h1>
-                                    {/* Image Previews */}
+                                    <IonCol size="12">
+                                        <h1>Plot number : <span className="plot">15</span> </h1>
+                                        <div className="descri">
+                                            <IonLabel>description</IonLabel>
+                                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, quis? Suscipit, vero ipsum.</p>
+                                        </div>
+                                    </IonCol>
+                                    <IonCol size="12">
+                                        <div className="previews-scroll">
+                                            <div className="previews">
+                                                <IonImg src="/assets/image/previews/1.jpg" alt="preview"></IonImg>
+                                                <IonImg src="/assets/image/previews/2.jpg" alt="preview"></IonImg>
+                                                <IonImg src="/assets/image/previews/3.jpg" alt="preview"></IonImg>
+                                            </div>
+                                        </div>
+                                    </IonCol>
                                 </IonRow>
-                            </IonRow>
+                            </>
                         )}
                     </IonContent>
                 </IonModal>

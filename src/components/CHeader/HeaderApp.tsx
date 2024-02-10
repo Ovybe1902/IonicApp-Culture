@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { IonRow, IonCol, IonText, IonIcon, IonButton, IonHeader, IonModal, IonContent, IonList, IonItem, IonImg } from '@ionic/react';
+import { IonRow, IonCol, IonText, IonIcon, IonButton, IonHeader, IonModal, IonContent, IonList, IonItem, IonImg, IonInput } from '@ionic/react';
 import { notificationsOutline, personOutline, closeOutline, createOutline } from 'ionicons/icons';
 import NotificationCard from '../CNotificationItem/NotificationCard';
 import "./HeaderApp.css";
@@ -42,7 +42,7 @@ const HeaderApp: React.FC<CHeaderProps> = ({ notifications }) => {
     <IonHeader className="headerapp">
       <IonRow className="headerapp-row ion-align-items-center">
         <IonCol size="6">
-          <IonText className="bold-text">Kultur</IonText>
+        <IonImg src="assets/image/logo-home.png" alt="logo" />
         </IonCol>
         <IonCol size="6" className="ion-text-right">
           <IonButton className="icon-button" onClick={openNotificationsModal}>
@@ -101,25 +101,24 @@ const HeaderApp: React.FC<CHeaderProps> = ({ notifications }) => {
             </IonRow>
           </div>
           <IonRow>
-            <IonCol size='6'>
-              <div className="user-info surface">
-                <h1>45621 ha</h1>
-                <p>owned surface</p>
+            <IonCol size='12'>
+              <div className="wallet">
+                <h1> 156💲</h1>
+                <button><h1>+</h1></button>
               </div>
             </IonCol>
-            <IonCol size='6'>
-              <div className="user-info plot">
-                <h1>4512</h1>
-                <p>plot number</p>
+
+            <IonCol size='12'>
+              <div className="add wallet">
+                <IonInput type='number'></IonInput>
+                <button><h1>+</h1></button>
               </div>
             </IonCol>
           </IonRow>
           <IonRow className="disconnect-button-row ion-align-items-center ion-justify-content-center">
-            <IonButton className="edit-button" style={{ backgroundColor: 'rgba(231, 255, 226, 0.592)' }} >
-            <IonIcon icon={createOutline} />
-              Edit
-            </IonButton>
-            <IonButton className="disconnect-button" onClick={handleLogout}>Disconnect</IonButton>
+            <button className="disconnect-button" onClick={handleLogout}> 
+              Disconnect
+            </button>
           </IonRow>
         </div>
         </IonContent>
