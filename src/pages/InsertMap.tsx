@@ -113,7 +113,6 @@ const InsertMap: React.FC = () => {
             }
         }
 
-
         const locs : Location[] = [loc1, loc2, loc3, loc4];
         const userIdString: string | undefined = Cookies.get('userId');
         const userId: number = userIdString !== undefined ? parseInt(userIdString, 10) : 0; // Provide a default value, such as 0, if the cookie is not found or undefined
@@ -206,7 +205,7 @@ const InsertMap: React.FC = () => {
                     <IonContent className="ion-padding">
                         <IonRow>
                             <IonCol size="12">
-                                <h1>Insert Field!</h1>
+                                <h1>Insert Field</h1>
                             </IonCol>
                         </IonRow>
                         <IonRow>
@@ -223,7 +222,7 @@ const InsertMap: React.FC = () => {
                                     onIonChange={handleDescriptionChange}
                                     label="Description"
                                     labelPlacement="stacked"
-                                    placeholder="Description"
+                                    placeholder="Type your field description"
                                 />
                             </IonCol>
                         </IonRow>

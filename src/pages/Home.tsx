@@ -144,7 +144,7 @@ const register = () => {
             <div className="home">
                 <HeaderApp notifications={notifications}></HeaderApp>
                 <h1 className="ctitle">
-                    Bonjour, {Cookies.get('username')}
+                    Hello, {Cookies.get('username')}
                 </h1>
                 <h2 className="ctitle">
                     Welcome! 🌽 Dive in and explore! If you need help, we're here for you.

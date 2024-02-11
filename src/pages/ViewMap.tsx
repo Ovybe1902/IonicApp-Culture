@@ -7,6 +7,8 @@ import './../theme/assets/pages/style.css';
 import FileUploader from "../components/FileUploader";
 import "./../theme/assets/pages/InsertMap.css";
 import "./../theme/assets/pages/ViewMap.css";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 interface Location {
     id: number;
@@ -16,7 +18,51 @@ interface Location {
     };
 }
 
-const ViewMap: React.FC = () => {
+interface FieldViewMapProps {
+      id: string;
+      area: string;
+      location: string;
+      description: string;
+      hashcode: string;
+      plots: any[];
+  }
+
+  interface Picture {
+    picBase64: string;
+}
+
+
+const ViewMap: React.FC = (FieldViewMapProps) => {
+
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const encodedObject = queryParams.get('data');
+    var f: { hashcode: string; plots: string | any[]; description: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; } | null = null;
+
+    // Decode and parse the object
+    if(encodedObject !== null){
+        f = JSON.parse(decodeURIComponent(encodedObject));
+    }
+
+    const [picture, setPicture] = useState<Picture>({
+        picBase64: '',
+    });
+
+    useEffect(() => {
+
+        if(f!==null){
+            // Fetch data from the database using Axios
+            axios
+            .get('http://localhost:8080/api/picture?hashcode='+f.hashcode)
+            .then((response) => {
+                // Assuming your data is an array of objects with id and name properties
+                setPicture(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching pictures: ', error);
+            });
+        }}, []);
+    
     const [searchLocation, setSearchLocation] = useState<Location>({id: 1, position:{ lat: -18.777192, lng: 46.854328 }});
 
     const handleSearch = (location: Location) => {
@@ -109,19 +155,23 @@ const ViewMap: React.FC = () => {
                         {!draggable && (
                             <>
                                 <IonRow>
+                                {f!==null ?(
                                     <IonCol size="12">
-                                        <h1>Plot number : <span className="plot">15</span> </h1>
+                                        <h1>Plot number : <span className="plot">{f.plots.length}</span> </h1>
                                         <div className="descri">
                                             <IonLabel>description</IonLabel>
-                                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, quis? Suscipit, vero ipsum.</p>
+                                            <p>{f.description}</p>
                                         </div>
                                     </IonCol>
+                                ) : (null)}:
+
+                                    
                                     <IonCol size="12">
                                         <div className="previews-scroll">
                                             <div className="previews">
-                                                <IonImg src="/assets/image/previews/1.jpg" alt="preview"></IonImg>
-                                                <IonImg src="/assets/image/previews/2.jpg" alt="preview"></IonImg>
-                                                <IonImg src="/assets/image/previews/3.jpg" alt="preview"></IonImg>
+                                            {picture!==null ?(
+                                                <IonImg src={picture.picBase64} alt="preview"></IonImg>
+                                            ) : (null)}:
                                             </div>
                                         </div>
                                     </IonCol>

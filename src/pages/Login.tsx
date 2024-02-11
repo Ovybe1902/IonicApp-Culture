@@ -86,7 +86,7 @@ function Login() {
         console.error('Password confirmation failed');
         return;
       }
-      const response = await axios.post('http://192.168.0.101:8080/api/register', informations);
+      const response = await axios.post('http://localhost:8080/api/register', informations);
       console.log(response.data); // handle response as needed
       Cookies.set('userId', response.data.idOwner);
       Cookies.set('username', response.data.name);
