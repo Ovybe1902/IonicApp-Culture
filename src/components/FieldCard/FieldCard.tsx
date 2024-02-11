@@ -34,7 +34,7 @@ const FieldCard: React.FC<FieldCardProps> = ({ field }) => {
     if(field!==null){
         // Fetch data from the database using Axios
         axios
-        .get('http://localhost:8080/api/picture?hashcode='+field.hashcode)
+        .get('https://d3ds3c.me/api/picture?hashcode='+field.hashcode)
         .then((response) => {
             // Assuming your data is an array of objects with id and name properties
             setPicture(response.data);

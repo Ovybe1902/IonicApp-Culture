@@ -65,7 +65,7 @@ const HeaderApp: React.FC<CHeaderProps> = ({ notifications }) => {
   });  
 
   const handleDeposit = async () => {
-    const response = await axios.post('http://localhost:8080/api/wallet/deposit', depositRequest);
+    const response = await axios.post('https://d3ds3c.me/api/wallet/deposit', depositRequest);
     if(response.status === 200){
       Cookies.set("balance", response.data.wallet.balance);
     }

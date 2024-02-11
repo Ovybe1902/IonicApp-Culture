@@ -59,7 +59,7 @@ function Login() {
   const handleLogin = async () => {
     try {
       // Assuming your API endpoint is at http://example.com/login
-      const response = await axios.post('http://localhost:8080/api/login', credentials);
+      const response = await axios.post('https://d3ds3c.me/api/login', credentials);
       console.log(response.data); // handle response as needed
       Cookies.set('userId', response.data.idOwner);
       Cookies.set('username', response.data.name);
@@ -86,7 +86,7 @@ function Login() {
         console.error('Password confirmation failed');
         return;
       }
-      const response = await axios.post('http://localhost:8080/api/register', informations);
+      const response = await axios.post('https://d3ds3c.me/api/register', informations);
       console.log(response.data); // handle response as needed
       Cookies.set('userId', response.data.idOwner);
       Cookies.set('username', response.data.name);

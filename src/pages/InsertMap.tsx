@@ -135,7 +135,7 @@ const InsertMap: React.FC = () => {
         console.log("newRequest");
         console.log(newRequest);
 
-        axios.post('http://localhost:8080/api/notification', newRequest)
+        axios.post('https://d3ds3c.me/api/notification', newRequest)
         .then((response) => {
             // Assuming your data is an array of objects with id and name properties
             console.log(response.data);
@@ -162,7 +162,7 @@ const InsertMap: React.FC = () => {
     useEffect(() => {
         // Fetch data from the database using Axios
         axios
-            .get('http://localhost:8080/api/groundtypes')
+            .get('https://d3ds3c.me/api/groundtypes')
             .then((response) => {
                 // Assuming your data is an array of objects with id and name properties
                 console.log(response.data);
