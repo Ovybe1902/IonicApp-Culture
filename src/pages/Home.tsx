@@ -11,6 +11,7 @@ import '../../firebaseConfig';
 import {getFirestore} from "@firebase/firestore";
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { Link } from "react-router-dom";
 
 
 interface Field {
@@ -163,11 +164,14 @@ const register = () => {
                         
                     </div>
                 </div>
-                <IonFab>
-                    <IonFabButton href="/addfield">
-                    <IonIcon icon={add}></IonIcon>
-                    </IonFabButton>
-                </IonFab>
+                <Link to="/addfield">
+                    <IonFab>
+                        <IonFabButton>
+                        <IonIcon icon={add}></IonIcon>
+                        </IonFabButton>
+                    </IonFab>
+                </Link>
+
             </div>
             </IonContent>
         </IonPage>
