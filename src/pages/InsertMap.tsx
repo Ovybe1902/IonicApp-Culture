@@ -49,7 +49,7 @@ const InsertMap: React.FC = () => {
     }
 
     //this is my code
-    const [plotNumber, setPlotNumber] = useState<number>(0);
+    const [plotNumber, setPlotNumber] = useState<number | undefined>(undefined);
     const [description, setDescription] = useState<string | undefined>(undefined);
     const [groundType, setGroundType] = useState<number | undefined>(undefined);
 
@@ -66,63 +66,6 @@ const InsertMap: React.FC = () => {
         console.log(groundType);
     };
 
-    // const handleValidate = () => {
-    //     // You can access plotNumber and description here and perform any actions needed
-    //     console.log("Plot Number:", plotNumber);
-    //     console.log("Description:", description);
-    //     console.log("Surface:", surfaceValue);
-
-    //     const area = localStorage.getItem('surface');
-    //     const location = localStorage.getItem('placeName');
-    //     const ll1 = localStorage.getItem('1');
-    //     const ll2 = localStorage.getItem('2');
-    //     const ll3 = localStorage.getItem('3');
-    //     const ll4 = localStorage.getItem('4');
-
-
-    //     if (ll1!== null && ll2 !== null && ll3 !==null && ll4!==null) {
-    //         const l1 = JSON.parse(ll1);
-    //         const l2 = JSON.parse(ll2);
-    //         const l3 = JSON.parse(ll3);
-    //         const l4 = JSON.parse(ll4);
-    //     } 
-
-    //     const location1 : Location = {
-    //         id: 1,
-    //         position: {
-    //             lat:  itemfromstorage,
-    //             lng: searchLocation.position.lng
-    //         }
-    //     }
-       
-
-    //     const localisation = localStorage.getItem('markers');
-    //     const pictures = localStorage.getItem('pictures');
-
-    //     const parsedLocalisation: Location[] = JSON.parse(localisation || '[]');
-    //     const parsedPictures: string[] = JSON.parse(pictures || '[]');
-
-    //     const newRequest: Request = {
-    //         plotNumber: plotNumber,
-    //         location: location || '',
-    //         description: description || '',
-    //         groundType: groundType || 0,
-    //         area: parseFloat(area || '0'), // Parse the string as a number
-    //         pictures: parsedPictures,
-    //         localisation: locs
-    //     };
-    //     console.log(newRequest)
-    //     // axios.post('http://localhost:8080/api/notification', newRequest)
-    //     //     .then((response) => {
-    //     //         // Assuming your data is an array of objects with id and name properties
-    //     //         console.log(response.data);
-
-    //     //     })
-    //     //     .catch((error) => {
-    //     //         console.error('Error fetching ground types: ', error);
-    //     //     });
-
-    // };
 
     const handleValidate = () => {
         // Retrieve necessary data from localStorage
@@ -178,7 +121,7 @@ const InsertMap: React.FC = () => {
         // Construct the request object using the state variables and retrieved data
         const newRequest: Request = {
             idOwner: userId,
-            plotNumber: plotNumber,
+            plotNumber: plotNumber || 0,
             location: location || '',
             description: description || '',
             groundType: groundType || 0,
@@ -268,10 +211,10 @@ const InsertMap: React.FC = () => {
                         </IonRow>
                         <IonRow>
                             <IonCol size="12">
-                                <IonInput label="plot number" type="number" onIonChange={handlePlotNumberChange} >
+                                <IonInput label="Plot number" type="number" onIonChange={handlePlotNumberChange} >
 
                                 </IonInput>
-                                <IonSelect onIonChange={handleGroundTypeChange}>
+                                <IonSelect onIonChange={handleGroundTypeChange} label="Ground Type">
                                     {groundTypes.map((groundType: any) => (
                                         <IonSelectOption value={groundType.idGroundType}>{groundType.name}</IonSelectOption>
                                     ))}
