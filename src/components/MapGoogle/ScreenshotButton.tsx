@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
 import MapGoogle from './MapGoogle';
@@ -19,7 +19,7 @@ interface MapGoogleProps {
     onEditButtonClick: () => void;
 }
 
-const ScreenshotButton:  React.FC<MapGoogleProps> = ({ searchLocation, defaultValue, draggable , onEditButtonClick}) => {
+const ScreenshotButton:  React.FC<MapGoogleProps> = ({ searchLocation, defaultValue, draggable , onEditButtonClick }) => {
   const containerRef = useRef(null);
 
   const handleCaptureScreenshot = () => {
@@ -80,6 +80,7 @@ const ScreenshotButton:  React.FC<MapGoogleProps> = ({ searchLocation, defaultVa
   
     return new Blob([u8arr], { type: mime });
   };
+
 
   return (
     <div>

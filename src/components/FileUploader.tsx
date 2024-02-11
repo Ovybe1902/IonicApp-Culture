@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IonButton, IonCol, IonIcon, IonRow } from '@ionic/react';
 import { cloudUploadOutline } from 'ionicons/icons';
 import './FileUploader.css';
@@ -12,12 +12,18 @@ const FileUploader: React.FC = () => {
     if (files && files.length > 0) {
       // Display previews
       const previews: string[] = [];
+      const pic: string[][] = [];
       for (let i = 0; i < files.length; i++) {
         const reader = new FileReader();
         reader.onload = (e) => {
           if (e.target && e.target.result) {
             previews.push(e.target.result.toString());
             setFilePreviews([...previews]);
+            pic.push(previews);
+
+            console.log("previews");
+            console.log(previews[0]);
+
 
             /** base64 String */
             console.log(e.target.result.toString());
@@ -25,8 +31,18 @@ const FileUploader: React.FC = () => {
         };
         reader.readAsDataURL(files[i]);
       }
+      console.log("picccccccccc");
+      console.log(pic);
+      
+
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem('pictures', JSON.stringify(filePreviews));
+  }, [filePreviews]);
+
+ 
 
   const handleButtonClick = () => {
     if (fileInputRef.current) {
@@ -54,7 +70,7 @@ const FileUploader: React.FC = () => {
           <div className="upload">
             <button className='upload-button'onClick={handleButtonClick}>
               <IonIcon slot="start" icon={cloudUploadOutline} />
-              Upload Image
+              Upload 1 Image only
             </button>
           </div>
         </IonCol>

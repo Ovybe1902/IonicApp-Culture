@@ -4,22 +4,43 @@ import HeaderApp from "../components/CHeader/HeaderApp";
 import FieldCard from "../components/FieldCard/FieldCard";
 import { add } from 'ionicons/icons';
 
-import FloatingButton from "../components/FloatingButton";
 import { collection, addDoc, getDocs, doc, getDoc, where, query} from "@firebase/firestore";
 import { PushNotificationSchema, PushNotifications, Token, ActionPerformed } from '@capacitor/push-notifications';
 import { Toast } from "@capacitor/toast";
 import '../../firebaseConfig';
 import {getFirestore} from "@firebase/firestore";
-import Cookies from "js-cookie";
+import axios from 'axios';
+import Cookies from 'js-cookie';
+
+
+interface Field {
+    field: any;
+  }
 
 const Home: React.FC = () => {
 
-    interface UserAuthenticated {
-        name: string;
-        email: string;
-    }
+    const[fields, setFields] = useState<any[]>([]);
 
-  
+    useEffect(() => {
+        fetchData();
+      }, []);
+    
+      const fetchData = async () => {
+        // setLoading(true);
+        // await new Promise(resolve => setTimeout(resolve, 500));
+        const endpoint = `http://localhost:8080/api/owner/fields?idUser=`+Cookies.get("userId");
+    
+        try {
+          const response = await axios.get<Field[]>(endpoint);
+          setFields(response.data);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }finally{
+        //   setLoading(false);
+        }
+      };
+
+
 
   const nullEntry: any[] = []
   const [notifications, setnotifications] = useState(nullEntry);
@@ -135,18 +156,11 @@ const register = () => {
                     
                 <div className="Field-Scroll">
                     <div className="fieldList">
-                        <FieldCard
-                            fieldAreaText="451,156 km²"
-                            locationText="452RH+, Analamanga, Antananarivo"
-                        />
-                        <FieldCard
-                            fieldAreaText="451,156 km²"
-                            locationText="452RH+, Analamanga, Antananarivo"
-                        />
-                        <FieldCard
-                            fieldAreaText="451,156 km²"
-                            locationText="452RH+, Analamanga, Antananarivo"
-                        />
+
+                        {fields.map((field, index) => (
+                            <FieldCard key={index} field={field} />
+                        ))}
+                        
                     </div>
                 </div>
                 <IonFab>
