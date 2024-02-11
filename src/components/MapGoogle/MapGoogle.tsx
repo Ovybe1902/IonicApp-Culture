@@ -143,7 +143,7 @@ const MapGoogle: React.FC<MapGoogleProps> = ({ searchLocation, draggable, defaul
             position={{ lat: marker.position.lat, lng: marker.position.lng }}
             icon={{
                 url: MyPngImage,
-                scaledSize:  new window.google.maps.Size(80,  80),
+                scaledSize: { width: 80, height: 80 },
                 fillColor: '#569ed2',
                 fillOpacity: 1,
                 strokeWeight: 0,
