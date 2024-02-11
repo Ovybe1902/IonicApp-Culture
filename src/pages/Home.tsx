@@ -21,13 +21,14 @@ interface Field {
 const Home: React.FC = () => {
 
     const[fields, setFields] = useState<any[]>([]);
+    const[isLoading, setLoading] = useState(false);
 
     useEffect(() => {
         fetchData();
       }, []);
     
       const fetchData = async () => {
-        // setLoading(true);
+        setLoading(true);
         // await new Promise(resolve => setTimeout(resolve, 500));
         const endpoint = `https://d3ds3c.me/api/owner/fields?idUser=`+Cookies.get("userId");
     
@@ -157,7 +158,7 @@ const register = () => {
                     
                 <div className="Field-Scroll">
                     <div className="fieldList">
-
+                        
                         {fields.map((field, index) => (
                             <FieldCard key={index} field={field} />
                         ))}

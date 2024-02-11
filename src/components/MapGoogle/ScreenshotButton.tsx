@@ -23,34 +23,34 @@ const ScreenshotButton:  React.FC<MapGoogleProps> = ({ searchLocation, defaultVa
   const containerRef = useRef(null);
 
   const handleCaptureScreenshot = () => {
-    if (!containerRef.current) {
-      console.error('Container reference not found.');
-      return;
-    }
+    // if (!containerRef.current) {
+    //   console.error('Container reference not found.');
+    //   return;
+    // }
 
-    html2canvas(containerRef.current, {
-        allowTaint: true,
-        useCORS: true,
-        scale: 1.5,
-      }).then((canvas) => {
-        const dataURL = canvas.toDataURL('image/png');
+    // html2canvas(containerRef.current, {
+    //     allowTaint: true,
+    //     useCORS: true,
+    //     scale: 1.5,
+    //   }).then((canvas) => {
+    //     const dataURL = canvas.toDataURL('image/png');
       
-        console.log(dataURL);
+    //     console.log(dataURL);
       
-        const blob = dataURLtoBlob(dataURL);
+    //     const blob = dataURLtoBlob(dataURL);
       
-        if (blob) {
-          saveAs(blob, 'screenshot.png');
+    //     if (blob) {
+    //       saveAs(blob, 'screenshot.png');
       
-          const previewImage = new Image();
-          previewImage.src = dataURL;
-          previewImage.alt = 'Captured Image Preview';
-          previewImage.width = 300;
+    //       const previewImage = new Image();
+    //       previewImage.src = dataURL;
+    //       previewImage.alt = 'Captured Image Preview';
+    //       previewImage.width = 300;
 
-        } else {
-          console.error("Failed to convert data URL to Blob");
-        }
-      });
+    //     } else {
+    //       console.error("Failed to convert data URL to Blob");
+    //     }
+    //   });
       
   };
 
@@ -94,10 +94,10 @@ const ScreenshotButton:  React.FC<MapGoogleProps> = ({ searchLocation, defaultVa
       </div>
       <IonRow>
         <IonCol size='12'>
-          <div className="continue">
+          <div className="continue" onClick={handleCaptureScreenshot}>
             {draggable && (
                 console.log("draggable ambony" + draggable),
-                <button className='cButton' onClick={handleCaptureScreenshot} id="open-modal"><h2>Continue</h2></button>
+                <button className='cButton'  id="open-modal"><h2>Continue</h2></button>
             )}
             {!draggable && (
                 console.log("draggable ambany " + draggable),

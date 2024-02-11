@@ -9,6 +9,9 @@ import "./../theme/assets/pages/InsertMap.css";
 import "./../theme/assets/pages/InsertMap.css"
 import axios from "axios";
 import Cookies from "js-cookie";
+import { Link } from "react-router-dom";
+import Loader from "../components/Loader";
+import { Toast } from "@capacitor/toast";
 
 interface Location {
     id: number;
@@ -52,6 +55,7 @@ const InsertMap: React.FC = () => {
     const [plotNumber, setPlotNumber] = useState<number | undefined>(undefined);
     const [description, setDescription] = useState<string | undefined>(undefined);
     const [groundType, setGroundType] = useState<number | undefined>(undefined);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handlePlotNumberChange = (event: CustomEvent) => {
         setPlotNumber(event.detail.value as number);
@@ -68,6 +72,7 @@ const InsertMap: React.FC = () => {
 
 
     const handleValidate = () => {
+        setIsLoading(true);
         // Retrieve necessary data from localStorage
         const area = localStorage.getItem('surface');
         const location = localStorage.getItem('placeName');
@@ -134,7 +139,8 @@ const InsertMap: React.FC = () => {
     
         console.log("newRequest");
         console.log(newRequest);
-
+        showToast("Request sent successfully to the administrator!");
+        setIsLoading(false);
         axios.post('https://d3ds3c.me/api/notification', newRequest)
         .then((response) => {
             // Assuming your data is an array of objects with id and name properties
@@ -142,6 +148,8 @@ const InsertMap: React.FC = () => {
 
         })
         .catch((error) => {
+            showToast("Error sending request to the administrator!");
+            setIsLoading(false);
             console.error('Error fetching ground types: ', error);
         });
     };
@@ -155,6 +163,12 @@ const InsertMap: React.FC = () => {
         setSurfaceValue(value);
         console.log("surface hehe="+value);
     };
+
+    const showToast = async (msg: string) => {
+        await Toast.show({
+            text: msg
+        })
+    }
 
 
     const [groundTypes, setgroundTypes] = useState([]);
@@ -180,7 +194,7 @@ const InsertMap: React.FC = () => {
         <IonPage>
             <div className="header-search">
                 <button>
-                    <a className='cButton back' href="/home">back</a>
+                    <Link className='cButton back' to="/home">back</Link>
                 </button>
                 <SearchBar onSearch={handleSearch} />
             </div>
@@ -233,9 +247,16 @@ const InsertMap: React.FC = () => {
                         </IonRow>
                         <IonRow>
                             <IonCol size="12">
-                                <div className="submit-button">
-                                    <button className="cButton" onClick={handleValidate}>Validate</button>
-                                </div>
+
+                                
+                                {isLoading ? 
+                                    (<Loader />) :
+                                    
+                                    <div className="submit-button">
+                                        <button className="cButton" onClick={handleValidate}>Validate</button>
+                                    </div>
+                                }
+                                
                             </IonCol>
                         </IonRow>
                     </IonContent>

@@ -18,9 +18,7 @@ import './Login.css';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom'; // Import useHistory from react-router-dom
 import Cookies from 'js-cookie';
-
-
-
+import Loader from '../components/Loader';
 
 interface UserCredentials {
   email: string;
@@ -56,7 +54,10 @@ function Login() {
   });
 
   const history = useHistory(); // Access the history object
+  const [isLoading, setIsLoading] = useState(false); // State to control the loader
+
   const handleLogin = async () => {
+    setIsLoading(true); // Set the loader to true (display it
     try {
       // Assuming your API endpoint is at http://example.com/login
       const response = await axios.post('https://d3ds3c.me/api/login', credentials);
@@ -67,10 +68,12 @@ function Login() {
       Cookies.set('idWallet', response.data.wallet.idWallet);
       Cookies.set("number", response.data.wallet.number);
       Cookies.set("balance", response.data.wallet.balance);
+      setIsLoading(false); // Set the loader to false (hide it)
       history.push('/home'); // Replace '/home' with your target route
 
 
     } catch (error) {
+      setIsLoading(false); // Set the loader to false (hide it  
       const element = document.getElementById("msg");
       if(element!==null)
         element.innerHTML = "<div class='Error Message'><h4>Wrong email or password '-^-'</h4></div>";
@@ -80,9 +83,11 @@ function Login() {
 
   const handleSignIn = async () => {
     try {
+      setIsLoading(true); // Set the loader to true (display it)
       // Assuming your API endpoint is at http://example.com/signup
 
       if(informations.pwd !== informations.pwdconfirm){
+        setIsLoading(false); // Set the loader to false (hide it)
         console.error('Password confirmation failed');
         return;
       }
@@ -94,16 +99,16 @@ function Login() {
       window.location.href = "/home";
       console.log("hey");
     } catch (error) {
-      document.getElementById
+      setIsLoading(false); // Set the loader to false (hide it) 
       console.error('Signin failed:', error);
     }
   }
   return (
     <IonPage>
+    
       <IonContent className="ion-padding">
+
         <div className="deco">
-
-
         </div>
         <div className="login">
           <div className="image-logo-log">
@@ -121,15 +126,21 @@ function Login() {
                 </IonItem>
                 <IonItem>
                   <div className="inputContain">
-                    <IonInput type="password" value="password" onIonChange={(e) => setCredentials({ ...credentials, pwd: e.detail.value! })}></IonInput>
+                    <IonInput type="password" placeholder='Password' onIonChange={(e) => setCredentials({ ...credentials, pwd: e.detail.value! })}></IonInput>
                   </div>
                 </IonItem>
             </IonList>
-            <div className="button-log">
-              <IonButton expand="block" onClick={handleLogin}>
-                <p className='label-button'>Login</p>
-              </IonButton>
-            </div>
+            {isLoading ? 
+                (<Loader />) :
+                
+                <div className="button-log">
+                  <IonButton expand="block" onClick={handleLogin}>
+                  <p className='label-button'>Login</p>
+                  </IonButton>
+              </div>
+                
+            }
+            
               <p className='text-log'>don't have an account?</p>
             <div className="button-log">
               <IonButton expand="block" id="open-modal">
@@ -200,11 +211,17 @@ function Login() {
                       />
                     </div>
                   </IonItem>
-                  <div className="button-log">
-                    <IonButton expand="block" onClick={handleSignIn}>
-                      <p className='label-button'>Signin</p>
-                    </IonButton>
-                  </div>
+
+                  {isLoading ? 
+                    (<Loader />) :
+                    
+                    <div className="button-log">
+                      <IonButton expand="block" onClick={handleSignIn}>
+                        SIGNIN
+                      </IonButton>
+                    </div>
+                }
+                 
                 </div>
               </div>
             </IonContent>

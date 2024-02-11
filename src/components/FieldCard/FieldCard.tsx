@@ -6,6 +6,7 @@ import MapIcon from '/assets/icons/location-icon.svg';
 import './FieldCard.css'; // Custom CSS file for styling
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Loader from '../Loader';
 
 interface FieldCardProps {
   field:
@@ -28,18 +29,21 @@ const FieldCard: React.FC<FieldCardProps> = ({ field }) => {
   const [picture, setPicture] = useState<Picture>({
     picBase64: '',
   });
-
+  const[isLoading, setLoading] = useState(false);
   useEffect(() => {
 
     if(field!==null){
         // Fetch data from the database using Axios
+        setLoading(true);
         axios
         .get('https://d3ds3c.me/api/picture?hashcode='+field.hashcode)
         .then((response) => {
             // Assuming your data is an array of objects with id and name properties
             setPicture(response.data);
+            setLoading(false);
         })
         .catch((error) => {
+          setLoading(false);
             console.error('Error fetching pictures: ', error);
         });
     }}, []);
@@ -49,9 +53,15 @@ const FieldCard: React.FC<FieldCardProps> = ({ field }) => {
       <div className='nb-plot-container'>
         <h3 className='nb-plot'>Plot number : {field.plots.length}</h3>
       </div>
-      <div className="image-container">
+      
+      {isLoading ? 
+      (<Loader />) :
+      
+      (<div className="image-container">
         <img src={picture.picBase64} alt="Field Image" className="field-image" />
-      </div>
+      </div>)
+      }
+      
       <Link to={`/field?data=${encodedObject}`}>
         <IonCardContent className="field-card-info">
           <IonRow className="field-area-row ion-align-items-center ion-justify-content-center">
