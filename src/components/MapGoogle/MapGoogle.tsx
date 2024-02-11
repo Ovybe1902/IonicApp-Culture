@@ -5,6 +5,7 @@ import MyPngImage from './map-location-icon.svg';
 import './MapGoogle.css';
 import { IonButton, IonCol, IonRow, IonTitle } from '@ionic/react';
 
+
 interface Location {
   id: number;
   position: {
@@ -120,7 +121,6 @@ const MapGoogle: React.FC<MapGoogleProps> = ({ searchLocation, draggable, defaul
       setPlaceName(null);
     }
   };
-
   useEffect(() => {
     if (centerCoordinate) {
       getPlaceName(centerCoordinate.lat, centerCoordinate.lng);
@@ -134,6 +134,7 @@ const MapGoogle: React.FC<MapGoogleProps> = ({ searchLocation, draggable, defaul
 
   return (
     <>
+    
       <LoadScript googleMapsApiKey="AIzaSyBGOok-9EsctgcbD9Cl_a4_EJ7ASkCMZxc">
         <GoogleMap mapContainerStyle={mapContainerStyle} center={markers[0].position} zoom={14} mapTypeId="satellite">
         {markers.map((marker) => (
@@ -142,7 +143,7 @@ const MapGoogle: React.FC<MapGoogleProps> = ({ searchLocation, draggable, defaul
             position={{ lat: marker.position.lat, lng: marker.position.lng }}
             icon={{
                 url: MyPngImage,
-                scaledSize: { width: 80, height: 80 },
+                scaledSize:  new window.google.maps.Size(80,  80),
                 fillColor: '#569ed2',
                 fillOpacity: 1,
                 strokeWeight: 0,
