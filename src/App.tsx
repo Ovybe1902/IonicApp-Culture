@@ -35,7 +35,6 @@ import './theme/variables.css';
 
 import Login from './pages/Login';
 import InsertMap from './pages/InsertMap';
-import Create from './pages/Create';
 import Home from './pages/Home';
 import ViewMap from './pages/ViewMap';
 import Cookies from 'js-cookie';
@@ -60,8 +59,6 @@ const App: React.FC = () => (
           <Route exact path="/">
             <Redirect to="/login" />
           </Route>
-          <ProtectedRoute  path="/create" component={Create}>
-          </ProtectedRoute>
           <ProtectedRoute  path="/field" component={ViewMap}>
           </ProtectedRoute>
 
